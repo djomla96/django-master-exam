@@ -1,16 +1,16 @@
 {% extends "BookSales/base.html" %}
 {% load static %}
 {% block title %}
-{{ book.naziv }}
+{{ book.name }}
 {% endblock %}
 {% block content %}
 <div class="product-detail">
-    <img src="{% if book.slika %}{{ book.slika.url }}
+    <img src="{% if book.img %}{{ book.img.url }}
 {% else %} {% static " img/no_image.png" %}{% endif %}">
     <h1>{{ book.title }}</h1>
     <h2>
         <a href="{{ book.genre.AbsoluteUrl }}">
-            {{ book.genre }}
+            {{ book.genre.slug }}
         </a>
     </h2>
     <p class="price">&euro;{{ book.price }}</p>
