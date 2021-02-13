@@ -4,7 +4,7 @@
 {% block content %}
 <div class="product-detail">
     <img src="{% if book.img %}{{ book.img.url }}{% else %}
-{% static " img\\no_image.png" %}{% endif %}">
+{% static "img\no_image.png" %}{% endif %}">
     <h1>{{ book.title }}</h1>
     <h2>
         <a href="{{ book.genre.ApsolutniURL }}"> {{ book.genre }}

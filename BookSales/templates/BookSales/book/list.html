@@ -22,7 +22,7 @@
     <div class="item">
         <a href="{{ book.AbsoluteUrl }}">
             <img src="{% if book.slika %}{{ book.slika.url }}
-{% else %}{% static " img/no_image.png" %}{% endif %}"></a>
+{% else %}{% static "img/no_image.png" %}{% endif %}"></a>
         <a href="{{ book.AbsoluteUrl }}">{{ book.title }}</a>
         <br>
         &euro;{{ book.price }}
