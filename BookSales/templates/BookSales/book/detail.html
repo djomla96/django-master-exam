@@ -1,20 +1,23 @@
 {% extends "BookSales/base.html" %}
 {% load static %}
-{% block title %}
-{{ book.name }}
-{% endblock %}
+{% block title %} {{ book.title }} {% endblock %}
 {% block content %}
 <div class="product-detail">
-    <img src="{% if book.img %}{{ book.img.url }}
-{% else %} {% static " img/no_image.png" %}{% endif %}">
+    <img src="{% if book.img %}{{ book.img.url }}{% else %}
+{% static " img\\no_image.png" %}{% endif %}">
     <h1>{{ book.title }}</h1>
     <h2>
-        <a href="{{ book.genre.AbsoluteUrl }}">
-            {{ book.genre.slug }}
+        <a href="{{ book.genre.ApsolutniURL }}"> {{ book.genre }}
         </a>
     </h2>
     <p class="price">&euro;{{ book.price }}</p>
-    <!-- ovde ce biti za korpu-->
+    <!-- dodato za korpu-->
+    <form action="{% url "KorpaZaKupovinu:DodajUKorpu" book.id %}" method="post">
+        {{ formazadodavanjeknjigaaukorpu }}
+        {% csrf_token %}
+        <input type="submit" value="Dodaj u korpu">
+    </form>
     {{ book.description|linebreaks }}
+    <p id="demo">{% url "KorpaZaKupovinu:DodajUKorpu" book.id %}</p>
 </div>
 {% endblock %}

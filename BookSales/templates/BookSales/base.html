@@ -9,11 +9,29 @@
 </head>
 
 <body>
-    <div id="header"><a href="/" class="logo">Book Sales</a></div>
-    <div id="subheader">
-        <div class="cart">Your cart is empty.</div>
+    <div id="header">
+        <a href="/" class="logo">Prodaja automobila</a>
     </div>
-    <div id="content">{% block content %}{% endblock %}</div>
+    <div id="subheader">
+        <div class="cart">
+            {{korpa|length}}
+            {% with brojstavkiukorpi=korpa|length %}
+            {% if brojstavkiukorpi > 0 %}
+            U korpi se nalazi:
+            <a href="{% url " KorpaZaKupovinu:DetaljiKorpe" %}">
+                {{brojstavkiukorpi}} kom, ukupna cena
+                &euro;{{ korpa.UzmiUkupnuCenu }}
+            </a>
+            {% else %}
+            Korpa je prazna.
+            {% endif %}
+            {% endwith %}
+        </div>
+    </div>
+    <div id="content">
+        {% block content %}
+        {% endblock %}
+    </div>
 </body>
 
 </html>

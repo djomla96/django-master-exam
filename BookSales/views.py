@@ -1,5 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Genre, Book
+from KorpaZaKupovinu.forms import FormaZaDodavanjeKnjigaUKorpu
+from KorpaZaKupovinu.korpa import Korpa
 
 # Create your views here.
 def BookList(request, genre_slug=None):
@@ -9,10 +11,14 @@ def BookList(request, genre_slug=None):
     if genre_slug:
         genre = get_object_or_404(Genre, slug=genre_slug)
         books = books.filter(genre=genre)
-    return render(request, 'BookSales/book/list.html',
-{'genre': genre, 'genres': genres, 'books': books})
+    korpa = Korpa(request)
+    return render(request, 'BookSales/book/list.html', 
+    {'genre': genre, 'genres': genres, 'books': books, korpa: korpa})
 
 def BookDetails(request, id, slug):
     book = get_object_or_404(Book, id=id, slug=slug, available=True)
-    return render(request, 'BookSales/book/detail.html', {'book': book})
+    korpa = Korpa(request)
+    formazadodavanjeknjigaukorpu = FormaZaDodavanjeKnjigaUKorpu()
+    return render(request, 'BookSales/book/detail.html', 
+    {'book': book, 'formazadodavanjeautomobilaukorpu': formazadodavanjeknjigaukorpu, 'korpa':korpa })
 

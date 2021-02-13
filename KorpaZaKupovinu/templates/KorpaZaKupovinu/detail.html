@@ -1,0 +1,59 @@
+{% extends "BookSales/base.html" %}
+{% load static %}
+{% block title %} Korpa za kupovinu {% endblock %}
+{% block content %}
+<h1>Korpa za kupovinu</h1>
+<table class="cart">
+    <thead>
+        <tr>
+            <th>Slika</th>
+            <th>Knjiga</th>
+            <th>Kolicina</th>
+            <th>Ukloni iz korpe</th>
+            <th>Cena po komadu</th>
+            <th>Cena</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for stavka in korpa %}
+        {% with book=stavka.book %}
+        <tr>
+            <td>
+                <a href="{{ book.ApsolutniURL }}">
+                    <img src="{% if book.slika %}{{ book.slika.url }}
+{% else %}{% static " img\\no_image.png" %}{% endif %}">
+                </a>
+            </td>
+            <td>{{ book.naziv }}</td>
+            <td>
+                <form action="{% url " KorpaZaKupovinu:DodajUKorpu" book.id %}" method="post">
+                    {{ stavka.formazaazuriranjekolicine.kolicina }}
+                    {{ stavka.formazaazuriranjekolicine.dodati_na_kolicinu }}
+                    <input type="submit" value="Azuriraj">
+                    {% csrf_token %}
+                </form>
+            </td>
+            <td>
+                <form action="{% url " KorpaZaKupovinu:UkloniIzKorpe" book.id %}" method="post">
+                    <input type="submit" value="Ukloni">
+                    {% csrf_token %}
+                </form>
+            </td>
+            <td class="num">${{ stavka.price }}</td>
+            <td class="num">${{ stavka.ukupna_cena }}</td>
+        </tr>
+        {% endwith %}
+        {% endfor %}
+        <tr class="total">
+            <td>Total</td>
+            <td colspan="4"></td>
+            <td class="num">${{ korpa.UzmiUkupnuCenu }}</td>
+        </tr>
+    </tbody>
+</table>
+<p class="text-right">
+    <a href="{% url " BookSales:BookList" %}" class="button
+    light">Nastavak kupovine</a>
+    <!-- ovde ce se kasnije dodati link za proveru porudzbine -->
+</p>
+{% endblock %}
