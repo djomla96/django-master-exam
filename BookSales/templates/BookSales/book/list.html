@@ -1,0 +1,32 @@
+{% extends "BookSales/base.html" %}
+{% load static %}
+{% block title %} {% if genre %}{{ genre.name }}{% else %}Books{% endif %}
+{% endblock %}
+{% block content %}
+<div id="sidebar">
+    <h3>genres</h3>
+    <ul>
+        <li {% if not genre %}class="selected" {% endif %}>
+            <a href="{% url " BookSales:BookList" %}">All</a>
+        </li>
+        {% for c in genres %}
+        <li {% if genre.slug == c.slug %}class="selected" {% endif %}>
+            <a href="{{ c.AbsoluteUrl }}">{{ c.name }}</a>
+        </li>
+        {% endfor %}
+    </ul>
+</div>
+<div id="main" class="product-list">
+    <h1>{% if genre %}{{ genre.name }}{% else %}Books{% endif %}</h1>
+    {% for book in books %}
+    <div class="item">
+        <a href="{{ book.AbsoluteUrl }}">
+            <img src="{% if book.slika %}{{ book.slika.url }}
+{% else %}{% static " img/no_image.png" %}{% endif %}"></a>
+        <a href="{{ book.AbsoluteUrl }}">{{ book.title }}</a>
+        <br>
+        &euro;{{ book.price }}
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

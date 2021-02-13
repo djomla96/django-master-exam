@@ -1,0 +1,20 @@
+{% extends "BookSales/base.html" %}
+{% load static %}
+{% block title %}
+{{ book.naziv }}
+{% endblock %}
+{% block content %}
+<div class="product-detail">
+    <img src="{% if book.slika %}{{ book.slika.url }}
+{% else %} {% static " img/no_image.png" %}{% endif %}">
+    <h1>{{ book.title }}</h1>
+    <h2>
+        <a href="{{ book.genre.AbsoluteUrl }}">
+            {{ book.genre }}
+        </a>
+    </h2>
+    <p class="price">&euro;{{ book.price }}</p>
+    <!-- ovde ce biti za korpu-->
+    {{ book.description|linebreaks }}
+</div>
+{% endblock %}
