@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'BookSales.apps.BooksalesConfig',
     'KorpaZaKupovinu.apps.KorpazakupovinuConfig',
+    'Porudzbina.apps.PorudzbinaConfig',
 ]
 
 MIDDLEWARE = [

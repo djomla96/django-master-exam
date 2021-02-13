@@ -1,0 +1,24 @@
+{% extends "BookSales/base.html" %}
+{% block title %}
+Provera
+{% endblock %}
+{% block content %}
+<h1>Provera</h1>
+<div class="order-info">
+    <h3>Vasa porudzbina</h3>
+    <ul>
+        {% for stavka in korpa %}
+        <li>
+            {{ stavka.kolicina }}x {{ stavka.automobil.naziv }}
+            <span>&euro;{{ stavka.ukupna_cena }}</span>
+        </li>
+        {% endfor %}
+    </ul>
+    <p>Total: ${{ korpa.UzmiUkupnuCenu }}</p>
+</div>
+<form method="post" class="order-form">
+    {{ forma.as_p }}
+    <p><input type="submit" value="Narucivanje"></p>
+    {% csrf_token %}
+</form>
+{% endblock %}
