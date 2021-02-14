@@ -18,15 +18,17 @@
 </div>
 <div id="main" class="product-list">
     <h1 class="camel-case">{% if genre %}{{ genre.slug }}{% else %}Knjige{% endif %}</h1>
+    <div class="book-wrapper">
     {% for book in books %}
     <div class="item">
         <a href="{{ book.AbsoluteUrl }}">
-            <img src="{% if book.slika %}{{ book.slika.url }}
+            <img src="{% if book.image %}{{ book.image.url }}
 {% else %}{% static "img/no_image.png" %}{% endif %}"></a>
         <a href="{{ book.AbsoluteUrl }}">{{ book.title }}</a>
         <br>
         &euro;{{ book.price }}
     </div>
     {% endfor %}
+</div>
 </div>
 {% endblock %}

@@ -25,6 +25,7 @@ a:hover {
 
 a.button, input[type="submit"] {
     color:#fff;
+    margin-left: 13px;
     background:#5993bb;
     border-radius:4px;
     padding:10px 20px;
@@ -77,11 +78,11 @@ table.cart {
 }
 
 table.cart img {
-    width:180px;
+    width:100px;
 }
 
 tbody td.num {
-    text-align:right;
+    text-align:left;
 }
 
 td input[type="submit"] {
@@ -100,7 +101,8 @@ form p label {
 }
 
 form p input {
-    width:300px;
+    width:100%;
+    max-width: 500px;
     font-size:13px;
     margin-bottom:10px;
     padding:10px 12px;
@@ -120,8 +122,8 @@ ul.errorlist {
 }
 
 #subheader {
-    background:#ececec;
-    color:#444;
+    background:#22252b;
+    color:#fff;
     padding:15px 100px;
     overflow:auto;
     display: flex;
@@ -132,7 +134,7 @@ ul.errorlist {
 #header .logo {
     font-family: 'Ubuntu', sans-serif;
     float:left;
-    color:#333;
+    color:#fff;
     font-size:22px;
 }
 
@@ -141,20 +143,31 @@ ul.errorlist {
     padding-top:4px;
 }
 
+.book-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
 #content {
     padding:0 100px;
     overflow:hidden;
+    display: flex;
+    flex-direction: column;
 }
 
 #sidebar {
     width:220px;
     padding:30px 20px 0 0;
     float:left;
+    width: 100%;
 }
 
 #sidebar ul{
     margin:0;
     padding:0;
+    display: flex;
+    width: 100%;
 }
 
 #sidebar ul li {
@@ -184,20 +197,20 @@ ul.errorlist {
 }
 
 .product-list .item {
-    width:25%;
-    padding:10px 20px 10px 0;
-    float:left;
     text-align:center;
-    line-height:1.2;
+    padding:10px 20px 10px 0;
+    max-width: 300px;
 }
 
 .product-list .item img {
-    width:100%;
-    margin-bottom:8px;
+    width: 100%;
+    margin-bottom: 8px;
+    max-height: 380px;
 }
 
 .product-detail {
     text-align:justify;
+    margin-top: 100px;
 }
 
 .product-detail .price {
@@ -207,9 +220,10 @@ ul.errorlist {
 }
 
 .product-detail img {
-    width:40%;
-    float:left;
-    padding:0 20px 20px 0;
+    float: left;
+    max-width: 420px;
+    width: 100%;
+    padding: 0 20px 20px 0;
 }
 
 .product-detail h1 {
@@ -221,12 +235,13 @@ ul.errorlist {
 }
 
 .order-form {
-    float:left;
+    width: 100%;
+    max-width: 500px;
 }
 
 .order-info {
     float:right;
-    width:300px;
+    width: 100%;
     background:#efefef;
     padding:10px 20px;
     color:#333;
@@ -327,3 +342,20 @@ form div.field {
     color:#666;
     border-radius:4px;
 }
+
+@media only screen and (max-width: 768px) {
+    #content {
+        padding: 0 20px;
+    }
+    .product-detail {
+        margin-top: 10px;
+        display: flex;
+        flex-direction: column
+    }
+    .product-detail img {
+        margin: 0 auto;
+    }
+    #subheader {
+        padding: 15px 10px;
+    }
+ }

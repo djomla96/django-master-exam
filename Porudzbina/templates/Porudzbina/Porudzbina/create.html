@@ -4,13 +4,17 @@ Provera
 {% endblock %}
 {% block content %}
 <h1>Provera</h1>
+<div style="display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;">
 <div class="order-info">
     <h3>Vasa porudzbina</h3>
     <ul>
         {% for stavka in korpa %}
         <li>
             {{ stavka.kolicina }}x {{ stavka.book.title }}
-            <span>&euro;{{ stavka.ukupna_cena }}</span>
+            <span>&euro;{{ stavka.price }}</span>
         </li>
         {% endfor %}
     </ul>
@@ -21,4 +25,5 @@ Provera
     <p><input type="submit" value="Narucivanje"></p>
     {% csrf_token %}
 </form>
+</div>
 {% endblock %}

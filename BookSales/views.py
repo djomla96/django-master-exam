@@ -8,12 +8,14 @@ def BookList(request, genre_slug=None):
     genre = None
     genres = Genre.objects.all()
     books = Book.objects.filter(available=True)
+    for book in books:
+        print(book.image)
     if genre_slug:
         genre = get_object_or_404(Genre, slug=genre_slug)
         books = books.filter(genre=genre)
     korpa = Korpa(request)
     return render(request, 'BookSales/book/list.html', 
-    {'genre': genre, 'genres': genres, 'books': books, korpa: korpa})
+    {'genre': genre, 'genres': genres, 'books': books, 'korpa': korpa})
 
 def BookDetails(request, id, slug):
     book = get_object_or_404(Book, id=id, slug=slug, available=True)

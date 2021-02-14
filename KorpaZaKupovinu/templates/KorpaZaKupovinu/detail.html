@@ -11,6 +11,7 @@
             <th>Kolicina</th>
             <th>Ukloni iz korpe</th>
             <th>Cena po komadu</th>
+            <th>Kolicina</th>
             <th>Cena</th>
         </tr>
     </thead>
@@ -19,12 +20,12 @@
         {% with book=stavka.book %}
         <tr>
             <td>
-                <a href="{{ book.ApsolutniURL }}">
-                    <img src="{% if book.slika %}{{ book.slika.url }}
+                <a href="{{ book.AbsoluteUrl }}">
+                    <img src="{% if book.image %}{{ book.image.url }}
 {% else %}{% static "img\no_image.png" %}{% endif %}">
                 </a>
             </td>
-            <td>{{ book.naziv }}</td>
+            <td>{{ book.title }}</td>
             <td>
                 <form action="{% url "KorpaZaKupovinu:DodajUKorpu" book.id %}" method="post">
                     {{ stavka.formazaazuriranjekolicine.kolicina }}
@@ -39,14 +40,15 @@
                     {% csrf_token %}
                 </form>
             </td>
-            <td class="num">${{ stavka.price }}</td>
-            <td class="num">${{ stavka.ukupna_cena }}</td>
+            <td class="num">${{ stavka.price }}</td> 
+            <td class="num">{{ stavka.kolicina }}</td> 
+            <td class="num">${{ stavka.ukupna_price }}</td>
         </tr>
         {% endwith %}
         {% endfor %}
         <tr class="total">
             <td>Total</td>
-            <td colspan="4"></td>
+            <td colspan="5"></td>
             <td class="num">${{ korpa.UzmiUkupnuCenu }}</td>
         </tr>
     </tbody>
