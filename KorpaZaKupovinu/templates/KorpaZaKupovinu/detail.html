@@ -26,7 +26,7 @@
             </td>
             <td>{{ book.naziv }}</td>
             <td>
-                <form action="{% url " KorpaZaKupovinu:DodajUKorpu" book.id %}" method="post">
+                <form action="{% url "KorpaZaKupovinu:DodajUKorpu" book.id %}" method="post">
                     {{ stavka.formazaazuriranjekolicine.kolicina }}
                     {{ stavka.formazaazuriranjekolicine.dodati_na_kolicinu }}
                     <input type="submit" value="Azuriraj">
@@ -34,7 +34,7 @@
                 </form>
             </td>
             <td>
-                <form action="{% url " KorpaZaKupovinu:UkloniIzKorpe" book.id %}" method="post">
+                <form action="{% url "KorpaZaKupovinu:UkloniIzKorpe" book.id %}" method="post">
                     <input type="submit" value="Ukloni">
                     {% csrf_token %}
                 </form>

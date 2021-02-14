@@ -11,7 +11,7 @@ def KreiranjePorudzbine(request):
             porudzbina = forma.save()
             for stavka in korpa:
                 StavkaPorudzbine.objects.create(porudzbina=porudzbina, 
-                automobil=stavka['automobil'], cena=stavka['cena'], kolicina=stavka['kolicina'])
+                book=stavka['book'], cena=stavka['price'], kolicina=stavka['kolicina'])
             korpa.ObrisiJeIzSesije()
             return render(request, 'Porudzbina/Porudzbina/created.html', {'porudzbina': porudzbina})
     else:

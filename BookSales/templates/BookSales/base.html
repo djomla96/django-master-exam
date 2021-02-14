@@ -9,16 +9,17 @@
 </head>
 
 <body>
-    <div id="header">
-        <a href="/" class="logo">Prodaja automobila</a>
-    </div>
+    
     <div id="subheader">
+        <div id="header">
+            <a href="/" class="logo">Prodaja Knjiga</a>
+        </div>
         <div class="cart">
             {{korpa|length}}
             {% with brojstavkiukorpi=korpa|length %}
             {% if brojstavkiukorpi > 0 %}
             U korpi se nalazi:
-            <a href="{% url " KorpaZaKupovinu:DetaljiKorpe" %}">
+            <a href="{% url "KorpaZaKupovinu:DetaljiKorpe" %}">
                 {{brojstavkiukorpi}} kom, ukupna cena
                 &euro;{{ korpa.UzmiUkupnuCenu }}
             </a>

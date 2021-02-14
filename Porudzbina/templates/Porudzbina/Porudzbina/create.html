@@ -9,7 +9,7 @@ Provera
     <ul>
         {% for stavka in korpa %}
         <li>
-            {{ stavka.kolicina }}x {{ stavka.automobil.naziv }}
+            {{ stavka.kolicina }}x {{ stavka.book.title }}
             <span>&euro;{{ stavka.ukupna_cena }}</span>
         </li>
         {% endfor %}

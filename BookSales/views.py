@@ -20,5 +20,5 @@ def BookDetails(request, id, slug):
     korpa = Korpa(request)
     formazadodavanjeknjigaukorpu = FormaZaDodavanjeKnjigaUKorpu()
     return render(request, 'BookSales/book/detail.html', 
-    {'book': book, 'formazadodavanjeautomobilaukorpu': formazadodavanjeknjigaukorpu, 'korpa':korpa })
+    {'book': book, 'formazadodavanjeknjigaukorpu': formazadodavanjeknjigaukorpu, 'korpa':korpa })
 

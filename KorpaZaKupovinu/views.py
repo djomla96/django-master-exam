@@ -11,9 +11,7 @@ def DodajUKorpu(request, book_id):
     form = FormaZaDodavanjeKnjigaUKorpu(request.POST)
     if form.is_valid():
         cd = form.cleaned_data
-        korpa.Dodaj(book=book,
-            kolicina=cd['kolicina'],
-            dodati_na_kolicinu=cd['dodati_na_kolicinu'])
+        korpa.Dodaj(book=book, kolicina=cd['kolicina'], dodati_na_kolicinu=cd['dodati_na_kolicinu'])
     return redirect('KorpaZaKupovinu:DetaljiKorpe')
 
 @require_POST

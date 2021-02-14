@@ -7,17 +7,17 @@
 {% static "img\no_image.png" %}{% endif %}">
     <h1>{{ book.title }}</h1>
     <h2>
-        <a href="{{ book.genre.ApsolutniURL }}"> {{ book.genre }}
+        <a class="camel-case" href="{{ book.genre.ApsolutniURL }}"> {{ book.genre.slug }}
         </a>
     </h2>
     <p class="price">&euro;{{ book.price }}</p>
     <!-- dodato za korpu-->
     <form action="{% url "KorpaZaKupovinu:DodajUKorpu" book.id %}" method="post">
-        {{ formazadodavanjeknjigaaukorpu }}
+        {{ formazadodavanjeknjigaukorpu }}
         {% csrf_token %}
         <input type="submit" value="Dodaj u korpu">
     </form>
     {{ book.description|linebreaks }}
-    <p id="demo">{% url "KorpaZaKupovinu:DodajUKorpu" book.id %}</p>
+    <!-- <p id="demo">{% url "KorpaZaKupovinu:DodajUKorpu" book.id %}</p> -->
 </div>
 {% endblock %}
